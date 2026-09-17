@@ -1,0 +1,64 @@
+body {
+    background-color: #f4f9f4;
+    font-family: Georgia, serif;
+    text-align: center;
+    color: #333;
+    padding: 20px;
+    margin: 0;
+}
+
+.book-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #2c5e3b;
+    margin-bottom: 20px;
+}
+
+.video-frame {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    
+    /* Fades edges of the video into the background page style */
+    -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
+    mask-image: radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
+}
+
+video {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+.poem-text {
+    font-size: 1.15rem;
+    margin: 25px 0;
+    line-height: 1.6;
+    min-height: 60px;
+    color: #444;
+}
+
+#mic-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.2s ease;
+}
+
+#mic-btn:hover {
+    background-color: #45a049;
+}

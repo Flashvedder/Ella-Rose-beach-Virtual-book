@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ella Rose Goes to the Beach</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="book-container">
+        <h1>Ella Rose Goes to the Beach</h1>
+        
+        <!-- Video Container with Vignette Frame Effect -->
+        <div class="video-frame">
+            <video id="story-video" autoplay muted loop playsinline>
+                <!-- Default video on load using relative path -->
+                <source src="sand.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Poem Stanza Display -->
+        <div class="poem-text">
+            <p id="stanza-display">Press "Start Reading" and read a line aloud!</p>
+        </div>
+
+        <!-- Voice Control Trigger Button -->
+        <button id="mic-btn">🎙️ Start Reading</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
