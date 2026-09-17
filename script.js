@@ -32,6 +32,7 @@ if (SpeechRecognition) {
             // Step 1: Looking for Sand
             if (speechResult.includes("sand") || speechResult.includes("shells")) {
                 videoElement.src = "sand.mp4";
+                videoElement.load(); // Forces Safari to load the video source
                 videoElement.play();
                 stanzaDisplay.innerHTML = "Sand and shells,<br>And wiggly toes<br>Amid sea glass,<br>Arranged in rows.";
                 storyStep = 1; // Advance to next step
@@ -44,6 +45,7 @@ if (SpeechRecognition) {
             // Step 2: Looking for Castle
             if (speechResult.includes("castle") || speechResult.includes("queen")) {
                 videoElement.src = "castle.mp4";
+                videoElement.load(); // Forces Safari to load the video source
                 videoElement.play();
                 stanzaDisplay.innerHTML = "Ella builds castles<br>Fit for a queen,<br>Packed dense with sand,<br>So they will not lean.";
                 storyStep = 2; // Advance to next step
@@ -56,16 +58,17 @@ if (SpeechRecognition) {
             // Step 3: Looking for Ice Cream
             if (speechResult.includes("ice cream") || speechResult.includes("melon") || speechResult.includes("cone")) {
                 videoElement.src = "icecream.mp4";
+                videoElement.load(); // Forces Safari to load the video source
                 videoElement.play();
                 stanzaDisplay.innerHTML = "Snacking on melons<br>And ice-cream cones,<br>Frosty smoothies<br>With blueberry scones.";
-                storyStep = 0; // Loop back to start or finish
+                storyStep = 0; // Loop back to start
                 micButton.textContent = "Story Complete! Tap to replay 🎙️";
             } else {
                 stanzaDisplay.innerHTML = `Heard: "${speechResult}"<br><b>Tip:</b> Read the ice cream stanza to finish!`;
             }
         }
 
-        // Reset button color state (keeping custom text prompt)
+        // Reset button color state
         micButton.style.backgroundColor = "#4CAF50";
     };
 
@@ -76,8 +79,9 @@ if (SpeechRecognition) {
     };
 
     recognition.onend = () => {
+        // Keeps the button state tidy if recognition ends
         if (micButton.style.backgroundColor !== "rgb(255, 152, 0)") {
-            // Only reset button if it's not actively waiting for a manual click change
+            // Leave custom prompt text intact
         }
     };
 
