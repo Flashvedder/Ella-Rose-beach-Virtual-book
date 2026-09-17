@@ -7,7 +7,7 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 
 if (SpeechRecognition) {
     const recognition = new SpeechRecognition();
-    recognition.continuous = false; // Stop automatically after hearing a phrase
+    recognition.continuous = false;
     recognition.interimResults = false;
     recognition.lang = 'en-US';
 
@@ -25,25 +25,26 @@ if (SpeechRecognition) {
         const speechResult = event.results[0][0].transcript.trim().toLowerCase();
         console.log("Heard:", speechResult);
 
-        if (speechResult.includes("plays in the sand") || speechResult.includes("sand and shells")) {
+        // Keyword-based matching so it's super easy to trigger
+        if (speechResult.includes("sand") || speechResult.includes("shells")) {
             videoElement.src = "sand.mp4";
             videoElement.play();
             stanzaDisplay.innerHTML = "Sand and shells,<br>And wiggly toes<br>Amid sea glass,<br>Arranged in rows.";
         } 
-        else if (speechResult.includes("builds a sand castle") || speechResult.includes("fit for a queen")) {
+        else if (speechResult.includes("castle") || speechResult.includes("queen")) {
             videoElement.src = "castle.mp4";
             videoElement.play();
             stanzaDisplay.innerHTML = "Ella builds castles<br>Fit for a queen,<br>Packed dense with sand,<br>So they will not lean.";
         } 
-        else if (speechResult.includes("eats an ice cream") || speechResult.includes("snacking on melons")) {
+        else if (speechResult.includes("ice cream") || speechResult.includes("melon") || speechResult.includes("cone")) {
             videoElement.src = "icecream.mp4";
             videoElement.play();
             stanzaDisplay.innerHTML = "Snacking on melons<br>And ice-cream cones,<br>Frosty smoothies<br>With blueberry scones.";
         } else {
-            stanzaDisplay.innerHTML = `Heard: "${speechResult}"<br>Try reading the exact poem line again!`;
+            stanzaDisplay.innerHTML = `Heard: "${speechResult}"<br>Try saying "sand", "castle", or "ice cream"!`;
         }
 
-        // Reset button state after processing
+        // Reset button state
         micButton.textContent = "🎙️ Start Reading";
         micButton.style.backgroundColor = "#4CAF50";
     };
@@ -55,7 +56,6 @@ if (SpeechRecognition) {
     };
 
     recognition.onend = () => {
-        // Reset button if it times out
         micButton.textContent = "🎙️ Start Reading";
         micButton.style.backgroundColor = "#4CAF50";
     };
